@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			padding: 20px 100px;
+		}
+		input[type=button] {
+			padding: 15px;
+			border-radius: 5px;
+			cursor: pointer;
+			border: 1px solid #CCC;
+			margin-right: 20px;
+		}
+		input[type=button]:hover {
+			background-color: #EEE;
+		}
+		#playground {
+			top: 20px;
+			position: relative;
+		}
+		img {
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<strong id="mess">请选择一张牌，记在心中：</strong>
+	<br><br>
+	<div id="btn">
+		<input onclick="choose(0);" type="button" value="选好了">
+	</div>
+	<br><br><hr>
+	<div id="playground"></div>
+</body>
+</html>
+<script src="card/jquery.min.js"></script>
+<script>
+
+var step = 0;
+var move_step = 0;
+var cards;
+var count = 21;
+var game_cards = ['AA','BB','B1','B2','B3','B4','B5','B6','B7','B8','B9','B10','B11','B12','B13','F1','F2','F3','F4','F5','F6','F7','F8','F9','F10','F11','F12','F13','K1','K2','K3','K4','K5','K6','K7','K8','K9','K10','K11','K12','K13','R1','R2','R3','R4','R5','R6','R7','R8','R9','R10','R11','R12','R13'];
+var pg = $("#playground");
+var cards_obj = [];
+var col_width = 200;
+var move_speed = 500;
+var bg_width = pg.width()-100;
+var mess = $("#mess");
+var btn = $("#btn");
+var rego = false;
+console.log("bg_width="+bg_width);
+cards  = shuffle(game_cards);
+cards = shuffle(cards);
+cards = shuffle(cards);
+cards = cards.slice(0,count);
+console.log("+++++++++++++++++++++++"+cards);
+function choose(num)
+{
+	console.log(step);
+	btn.html("");
+	if(step==0)
+	{
+		mess.html('请告诉我您的牌在第几列：');
+		btn.html("<input onclick='choose(1)' value='第1列' type='button'> <input onclick='choose(2)' value='第2列' type='button'> <input onclick='choose(3)' value='第3列' type='button'>");
+		step = 1;
+	}
+	else
+	{
+		var t;
+		var d = count/3;
+		if(num==1)
+		{
+			for(let i=0; i<d; i++)
+			{
+				t = cards[i];
+				cards[i]=cards[i+d];
+				cards[i+d] = t;
+			}
+		}
+		if(num==3)
+		{
+			for(let i=d; i<2*d; i++)
+			{
+				t = cards[i];
+				cards[i]=cards[i+d];
+				cards[i+d] = t;
+			}
+		}
+		if(step == 1)
+		{
+			move_step = 0;
+			move_back();
+			rego=true;
+			mess.html('现在您的牌在第几列：');
+			btn.html("<input onclick='choose(1)' value='第1列' type='button'> <input onclick='choose(2)' value='第2列' type='button'> <input onclick='choose(3)' value='第3列' type='button'>");
+			step = 2;
+		}
+		else
+		{
+			if(step==2)
+			{
+
+				move_step = 0;
+				move_back();
+				rego=true;
+				mess.html('现在您的牌在第几列：');
+				btn.html("<input onclick='choose(1)' value='第1列' type='button'> <input onclick='choose(2)' value='第2列' type='button'> <input onclick='choose(3)' value='第3列' type='button'>");
+				step = 3;
+			}
+			else
+			{
+				mess.html('程序分析中...');
+				setTimeout(result1,3000);
+				move_step = 0;
+				move_back();
+			}
+		}
+	}
+}
+function result1()
+{
+	mess.html('经过程序分析，您选的牌应该是：');
+	setTimeout(result2,3000);
+}
+function result2()
+{
+	makeobj();
+	$(cards_obj[Math.floor(count/2)]).animate({
+		left:"200px",
+		top:"100px"
+	},1000);
+}
+function rand(min,max)
+{
+	return Math.floor(Math.random() * (max - min) + min);
+}
+function shuffle(arr)
+{
+	return arr.sort(function(){ return 0.5 - Math.random() });
+}
+function move_forward(ini)
+{
+	console.log('move_forward');
+	if(ini)
+		makeobj();
+	var width = (move_step%3)*col_width;
+	var height = Math.floor(move_step/3)*50;
+	$(cards_obj[move_step]).animate({
+		left:width+"px",
+		top:height+"px",
+	},move_speed);
+	if(++move_step<count)
+	 	setTimeout(move_forward, 100);
+	else
+	{
+		btn.html("<input onclick='choose(1)' value='第1列' type='button'> <input onclick='choose(2)' value='第2列' type='button'> <input onclick='choose(3)' value='第3列' type='button'>");
+		move_cards_data();
+	}
+}
+function move_back()
+{
+	console.log('move_back');
+	btn.html("");
+	$(cards_obj[move_step]).animate({
+		left:bg_width+"px",
+		top:0+"px",
+	},move_speed);
+	if(++move_step<count)
+	 	setTimeout(move_back, 100);
+	else
+	{
+		if(rego)
+		{
+			move_step=0;
+			move_forward(1);
+			rego = false;
+		}
+	}
+}
+function move_cards_data()
+{
+	var d = count/3;
+	var arr = [];
+	for(let i=0; i<d; i++)
+	{
+		arr[i] = cards[i*3];
+		arr[i+d] = cards[i*3+1];
+		arr[i+2*d] = cards[i*3+2]
+	}
+	cards = arr;
+}
+function makeobj()
+{
+	pg.html("");
+	for(let i=0; i<cards.length; i++)
+	{
+		 cards_obj[i] = $('<img src="card/'+cards[i]+'.jpg">');
+		 cards_obj[i].css({
+		 	right:"0px",
+		 	top:"0px"
+		 });
+		 pg.append(cards_obj[i]);
+	}
+
+	console.log("----------------------->"+cards);
+}
+makeobj();
+setTimeout(initloc, 500);
+function initloc()
+{
+	var d = count/3;
+	var width = (Math.floor(move_step/d))*col_width;
+	var height = move_step%d*50;
+	$(cards_obj[move_step]).animate({
+		left:width+"px",
+		top:height+"px",
+	},move_speed);
+	if(++move_step<count)
+	 	setTimeout(initloc, 100);
+}
+
+
+</script>
