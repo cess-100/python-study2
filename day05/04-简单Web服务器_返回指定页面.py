@@ -15,6 +15,7 @@ def request_handler(new_client_socket, ip_port):
     # 根据客户端浏览器请求的资源路径，返回请求资源
     # 1）把请求协议解码，得到请求报文的字符串
     request_text = request_data.decode()
+
     # 2）得到请求行
     #    （1） 查找 第一个\r\n 出现的位置
     loc = request_text.find("\r\n")
@@ -50,11 +51,7 @@ def request_handler(new_client_socket, ip_port):
 
 def main():
     """主函数"""
-    # 1、导入模块
-    # 2、创建套接字
     tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    # 3、设置地址重用
-    #                                 当前套接字            地址重用         值True
     tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True)
     tcp_server_socket.bind(("", 8888))
     tcp_server_socket.listen(128)

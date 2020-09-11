@@ -34,15 +34,9 @@ class WebServer(object):
 
     # 初始化方法
     def __init__(self, port):
-        # 1、导入模块
-        # 2、创建套接字
         self.tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        # 3、设置地址重用
-        #                                 当前套接字            地址重用         值True
         self.tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True)
-        # 4、绑定端口
         self.tcp_server_socket.bind(("", port))
-        # 5、设置监听，让套接字由主动变为被动接收
         self.tcp_server_socket.listen(128)
 
         # 定义类的实例属性， projects_dict 初始化为空

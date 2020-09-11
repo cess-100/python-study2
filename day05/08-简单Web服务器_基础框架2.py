@@ -7,8 +7,6 @@ class WebServer(object):
     def __init__(self):
         # 2、创建套接字
         self.tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        # 3、设置地址重用
-        #                                 当前套接字            地址重用         值True
         self.tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True)
         self.tcp_server_socket.bind(("", 8888))
         self.tcp_server_socket.listen(128)

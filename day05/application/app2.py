@@ -3,20 +3,10 @@ from application import utils
 
 def parse_request(request_data, ip_port):
     """解析请求报文，返回客户端资源路径"""
-    # 根据客户端浏览器请求的资源路径，返回请求资源
-    # 1）把请求协议解码，得到请求报文的字符串
     request_text = request_data.decode()
-    # 2）得到请求行
-    #    （1） 查找 第一个\r\n 出现的位置
     loc = request_text.find("\r\n")
-    #    （2） 截取字符串，从开头截取到 第一个\r\n 出现的位置
     request_line = request_text[:loc]
-    # print(request_line)
-    # 3）把请求行，按照空格拆分，得到列表
     request_line_list = request_line.split(" ")
-    # print(request_line_list)
-
-    # 得到请求的资源路径
     file_path = request_line_list[1]
     print("[%s]正在请求:%s" % (str(ip_port), file_path))
 

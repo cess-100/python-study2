@@ -66,8 +66,6 @@ def main():
     # 1、导入模块
     # 2、创建套接字
     tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    # 3、设置地址重用
-    #                                 当前套接字            地址重用         值True
     tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True)
     tcp_server_socket.bind(("", 8888))
     tcp_server_socket.listen(128)

@@ -6,8 +6,6 @@ class WebServer(object):
     def __init__(self):
         # 2、创建套接字
         self.tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        # 3、设置地址重用
-        #                                 当前套接字            地址重用         值True
         self.tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True)
         self.tcp_server_socket.bind(("", 8888))
         self.tcp_server_socket.listen(128)
@@ -18,6 +16,7 @@ class WebServer(object):
         while True:
             new_client_socket, ip_port = self.tcp_server_socket.accept()
             print("新客户来了:", ip_port)
+
             # 调用功能函数处理请求并且响应
             self.request_handler(new_client_socket, ip_port)
 
@@ -36,19 +35,10 @@ class WebServer(object):
             return
 
         # 根据客户端浏览器请求的资源路径，返回请求资源
-        # 1）把请求协议解码，得到请求报文的字符串
         request_text = request_data.decode()
-        # 2）得到请求行
-        #    （1） 查找 第一个\r\n 出现的位置
         loc = request_text.find("\r\n")
-        #    （2） 截取字符串，从开头截取到 第一个\r\n 出现的位置
         request_line = request_text[:loc]
-        # print(request_line)
-        # 3）把请求行，按照空格拆分，得到列表
         request_line_list = request_line.split(" ")
-        # print(request_line_list)
-
-        # 得到请求的资源路径
         file_path = request_line_list[1]
         print("[%s]正在请求:%s" % (str(ip_port), file_path))
 

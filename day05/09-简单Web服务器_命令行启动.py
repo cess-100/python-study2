@@ -79,8 +79,8 @@ def main():
 
     # 5、获取端口号
     port = int(sys.argv[1])
-    # 6、在启动Web服务器的时候，使用指定的端口
 
+    # 6、在启动Web服务器的时候，使用指定的端口
     # 创建WebServer类的对象
     ws = WebServer(port)
     # 对象.start() 启动Web服务器
