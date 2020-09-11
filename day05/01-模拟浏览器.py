@@ -20,7 +20,7 @@ request_data = request_line + request_header + request_blank
 tcp_client_socket.send(request_data.encode())
 
 # 6、接收服务器响应内容
-recv_data = tcp_client_socket.recv(40960)  # 4096==4Kb
+recv_data = tcp_client_socket.recv(4096)
 # 解码
 recv_text = recv_data.decode()
 
