@@ -42,13 +42,13 @@ def send_msg(udp_socket):
 
     # 判断是否需要默认
     if len(ipaddr) == 0:
-        ipaddr = "192.168.150.93"
+        ipaddr = "192.168.199.132"
         print("当前接收方默认IP设置为[%s]" % ipaddr)
 
     # 2）定义变量接收用户与输入的接收方的端口号
     port = input("请输入接收方的端口号：\n")
     if len(port) == 0:
-        port = "8080"
+        port = "8888"
         print("当前接收方默认端口设置为[%s]" % port)
 
     # 3)定义变量接收用户与输入的接收方的内容
@@ -73,7 +73,7 @@ def recv_msg(udp_socket):
 def main():
     """程序的主入口"""
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    udp_socket.bind(("", 8080))
+    udp_socket.bind(("", 8888))
 
     # 创建子线程，单独接收用户发送的信息
     thread_recvmsg = threading.Thread(target=recv_msg, args=(udp_socket, ))
