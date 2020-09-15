@@ -14,10 +14,14 @@ TCP服务端
 
 """
 # 导入模块
+import gevent
+# 打猴子补丁， 目的:识别程序中的耗时操作
+from gevent import monkey
+monkey.patch_all()
+
 import socket
 from application import app2
 import sys
-import multiprocessing
 
 """
 1、在类的初始化方法中配置当前当前的项目
@@ -83,17 +87,12 @@ class WebServer(object):
             new_client_socket, ip_port = self.tcp_server_socket.accept()
             print("新客户来了:", ip_port)
 
-            # 创建进程
-            process = multiprocessing.Process(target=self.request_handler, args=(new_client_socket, ip_port))
-
-            # 设置进程守护
-            process.daemon = True
-
-            # 启动进程
-            process.start()
-
-            # 子进程运行会拷贝主进程的资源，导致对象自进程内部不能释放
-            new_client_socket.close()
+            # 调用功能函数处理请求并且响应
+            # 1.导入 gevent 模块
+            # 2.使用gevent分派任务
+            # 3.打补丁
+            gevent.spawn(self.request_handler, new_client_socket, ip_port)
+            # g1.join()
 
     def request_handler(self, new_client_socket, ip_port):
         """接收信息，并且做出响应"""
@@ -128,8 +127,12 @@ def main():
     5、获取端口号
     6、在启动Web服务器的时候，使用指定的端口
     """
+    # 2、获取系统传递到程序的参数['09-简单Web服务器_命令行启动.py', '8888', 'aaa', 'bbb', 'xxxx', '123']
+    # ['09-简单Web服务器_命令行启动.py', '8888', 'aaa', 'bbb', 'xxxx', '123']
+    params_list = sys.argv
+    # print(params_list)
 
-    # 判断参数格式是否正确
+    # 3、判断参数格式是否正确
     if len(sys.argv) != 2:
         print("启动失败，参数格式错误!正确格式:python3 xxx.py 端口号")
         return

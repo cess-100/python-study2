@@ -82,6 +82,7 @@ class WebServer(object):
         while True:
             new_client_socket, ip_port = self.tcp_server_socket.accept()
             print("新客户来了:", ip_port)
+
             # 创建线程
             thread_recvmsg = threading.Thread(target=self.request_handler, args=(new_client_socket, ip_port))
 
