@@ -1,5 +1,4 @@
 """
-
 定义函数，实现获取影片地址 get_movie_link
 1、设置爬去的电影列表页面
 2、打开电影列表页，获取数据，并解码得到网页html文本内容
@@ -8,7 +7,6 @@
 5、保存影片名称和地址到字典中
 
 定义主函数main 调用 get_movie_link 函数，获取地址
-
 """
 import re
 import urllib.request
@@ -41,7 +39,6 @@ class Spider(object):
         for film_name, film_download_url in list1:
             print(film_name, "|", film_download_url)
 
-
     def get_movie_link(self, page):
 
         # 1、设置爬去的电影列表页面
@@ -53,7 +50,7 @@ class Spider(object):
         # 2.2 得到列表页返回的数据
         response_list_data = response_list.read()
         # 2.3 解码数据
-        response_list_text = response_list_data.decode("GBK")
+        response_list_text = response_list_data.decode("GBK", errors="ignore")
         # 3、使用正则匹配获得
         url_list = re.findall("<a href=\"(.*)\" class=\"ulink\">(.*)</a>", response_list_text)
 
@@ -61,15 +58,15 @@ class Spider(object):
         for film_content_url, film_name in url_list:
 
             # 4、循环打开内容页，获取下载地址
-            film_content_url = "http://www.ygdy8.net"+film_content_url
+            film_content_url = "http://www.ygdy8.net" + film_content_url
             # 4.1 打开url地址，获取返回的数据
             response_content = urllib.request.urlopen(film_content_url)
             # 4.2 读取返回的数据
             response_data = response_content.read()
             # 4.3 解码数据
-            response_content_text = response_data.decode("GBK")
+            response_content_text = response_data.decode("GBK", errors="ignore")
             # 4.4 使用正则，取出下载地址
-            ret = re.search("bgcolor=\"#fdfddf\"><a href=\"(.*?)\">",response_content_text)
+            ret = re.search("bgcolor=\"#fdfddf\"><a href=\"(.*?)\">", response_content_text)
             if ret:
                 # 5、保存影片名称和地址到字典中
                 self.lock1.acquire()
@@ -82,12 +79,9 @@ class Spider(object):
 
 
 def main():
-
     film_spider = Spider()
     film_spider.start()
 
 
 if __name__ == '__main__':
-
     main()
-

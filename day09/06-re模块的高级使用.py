@@ -59,6 +59,16 @@ if result:
 else:
     print("匹配失败!")
 
+
+def add(temp):
+    strNum = temp.group()
+    num = int(strNum) + 1
+    return str(num)
+
+
+ret = re.sub(r"\d+", add, "python = 997")
+print(ret)
+
 # 四、split("正则表达式", "待拆分的字符串")  按照正则拆分字符串，返回值是一个列表
 result = re.split(":| ", "info:hello@163.com zhangsan lisi")
 
