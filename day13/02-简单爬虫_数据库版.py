@@ -57,7 +57,6 @@ def get_movie_links():
     response_list_text = response_list_data.decode("GBK", errors="ignore")
 
     # 4、使用正则得到所有的影片内容地址
-    #  4.1 使用findall() 根据正则查找所有影片对应的内容页地址
     # url_list = [('/html/.......', 'xxx影片'),('/html/.......', 'xxx影片')]
     url_list = re.findall(r"<a href=\"(.*)\" class=\"ulink\">(.*)</a>", response_list_text)
 
