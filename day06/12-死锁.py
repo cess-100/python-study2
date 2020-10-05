@@ -3,8 +3,8 @@ import threading
 
 # 定义函数   根据下标获取列表元素值
 def get_value(index):
-    #            0 1 2 3 4
-    data_list = [1,3,5,7,9]
+    #            0  1  2  3  4
+    data_list = [1, 3, 5, 7, 9]
     # 上锁
     lock.acquire()
 
@@ -28,5 +28,5 @@ if __name__ == '__main__':
 
     # 循环创建10个线程
     for i in range(10):
-        t1 = threading.Thread(target=get_value, args=(i, ))
+        t1 = threading.Thread(target=get_value, args=(i,))
         t1.start()

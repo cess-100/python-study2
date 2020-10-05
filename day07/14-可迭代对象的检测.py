@@ -7,19 +7,19 @@ from collections import Iterable
 
 ret = isinstance([1, 2, 3], Iterable)
 print(ret)
-print("--" * 20) # True
+print("--" * 20)  # True
 
 ret = isinstance((1, 2, 3), Iterable)
 print(ret)
-print("--" * 20) # True
+print("--" * 20)  # True
 
 ret = isinstance({"age": 18, "name": "铁锤"}, Iterable)
 print(ret)
-print("--" * 20) # True
+print("--" * 20)  # True
 
 ret = isinstance(100, Iterable)
 print(ret)
-print("--" * 20) # False
+print("--" * 20)  # False
 
 
 class MyClass(object):
@@ -29,7 +29,7 @@ class MyClass(object):
 myclass = MyClass()
 ret = isinstance(myclass, Iterable)
 print(ret)
-print("--" * 20) # False
+print("--" * 20)  # False
 
 
 # 自定义一个类
@@ -44,7 +44,7 @@ class MyClass2(object):
 myclass2 = MyClass2()
 ret = isinstance(myclass2, Iterable)
 print(ret)
-print("--" * 20) # True
+print("--" * 20)  # True
 
 """
 1、可遍历对象就是可迭代对象

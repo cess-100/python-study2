@@ -22,7 +22,7 @@ if __name__ == '__main__':
     print("我要死~!")
 
     # terminate() 终止子进程的执行
-    process_obj.terminate()
+    # process_obj.terminate()
 
     exit()
     print("xxxxxxx")

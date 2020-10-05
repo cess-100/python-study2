@@ -14,7 +14,6 @@ def work1():
 
 
 if __name__ == '__main__':
-
     # 1、导入模块
     # 2、通过模块提供的Process类创建进程对象
     process_obj = multiprocessing.Process(target=work1)

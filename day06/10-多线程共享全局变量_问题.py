@@ -15,7 +15,7 @@ def work1():
     for i in range(1000000):
         g_num += 1
 
-    print("work1----------", g_num)  # 10
+    print("work1----------", g_num)
 
 
 # work2
@@ -26,7 +26,7 @@ def work2():
     for i in range(1000000):
         g_num += 1
 
-    print("work2----------", g_num)  # ？
+    print("work2----------", g_num)
 
 
 if __name__ == '__main__':

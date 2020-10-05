@@ -14,5 +14,8 @@ if __name__ == '__main__':
         # pool.apply(copy_work)
         pool.apply_async(copy_work)
 
+    # close() 不再接收新的任务
     pool.close()
+
+    # 让主进程等待进程池结束后在退出
     pool.join()

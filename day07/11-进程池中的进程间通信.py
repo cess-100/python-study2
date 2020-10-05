@@ -4,7 +4,6 @@ import multiprocessing
 
 # 1、写入数据到队列的函数
 def write_queue(queue):
-
     # for循环，向队列写入数据
     for i in range(10):
         # 判断队列是否已满
@@ -14,12 +13,12 @@ def write_queue(queue):
 
         # 向队列中放入值
         queue.put(i)
-        print("写入成功，已经写入:",i)
+        print("写入成功，已经写入:", i)
         time.sleep(0.5)
+
 
 # 2、读取队列数据并显示的函数
 def read_queue(queue):
-
     while True:
         # 判断队列是否已经为空
         if queue.qsize() == 0:
@@ -46,9 +45,9 @@ if __name__ == '__main__':
     #     3.2 异步方式
     # apply_async() 返回值 ApplyResult对象，该对象由一个 wait() 的方法
     # wait() 方法类似join() 表示先让当前进程执行完毕，后续进程才能启动
-    result = pool.apply_async(write_queue, (queue, ))
+    result = pool.apply_async(write_queue, (queue,))
     result.wait()
-    pool.apply_async(read_queue, (queue, ))
+    pool.apply_async(read_queue, (queue,))
 
     # close()表示不再接收新的任务
     pool.close()
