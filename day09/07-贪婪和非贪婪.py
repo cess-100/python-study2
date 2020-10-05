@@ -16,6 +16,6 @@ if result:
     print("匹配成功!")
     # 4、如果成功，获取匹配的结果
     print("匹配结果:", result.group())
-    print("地址：",result.group(1))
+    print("地址：", result.group(1))
 else:
     print("匹配失败!")

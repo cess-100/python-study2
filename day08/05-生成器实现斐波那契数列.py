@@ -53,11 +53,11 @@ if __name__ == '__main__':
     value = next(fib)
     print("第3列", value)
 
+    value = next(fib)
+    print("第4列", value)
+
+    value = next(fib)
+    print("第5列", value)
+
     # value = next(fib)
-    # print("第4列", value)
-    #
-    # value = next(fib)
-    # print("第5列", value)
-    #
-    # value = next(fib)
-    # print("第5列", value)
+    # print("第6列", value)

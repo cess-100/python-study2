@@ -10,7 +10,7 @@ def work1():
 
 def work2():
     while True:
-        print("正在执行work1........")
+        print("正在执行work2........")
         yield
         time.sleep(0.5)
 

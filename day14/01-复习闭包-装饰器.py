@@ -8,6 +8,7 @@ def test():
 # # 调用 test
 # ret()
 
+
 """
 闭包结构：
 1. 存在函数的嵌套关系
@@ -15,9 +16,7 @@ def test():
 3. 外层返回内层的引用
 """
 
-
 # def function_out(num):
-#
 #     def function_in():
 #         print("num = ",num)
 #
@@ -28,7 +27,6 @@ def test():
 
 
 def function_out(func):
-
     def function_in():
         print("-----开始验证-----")
         func()

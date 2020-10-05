@@ -13,7 +13,6 @@ data_list1 = [x * 2 for x in range(10)]
 for value in data_list1:
     print(value, end=" ")
 
-
 # 生成器的创建一：
 data_list2 = (x * 2 for x in range(10))
 print(data_list2)
@@ -34,7 +33,7 @@ def test1():
 
 
 m = test1()
-print("m =", m)  # 10
+print("m =", m)
 
 
 # 使用yield 创建了一个生成器
@@ -48,4 +47,3 @@ print(n)
 
 value = next(n)
 print("----->", value)
-

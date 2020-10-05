@@ -5,15 +5,15 @@ class A(object):
 
 class B(A):
     def __init__(self):
-        # super().__init__()
-        A.__init__(self)
+        super().__init__()
+        # A.__init__(self)
         print("B")
 
 
 class C(A):
     def __init__(self):
-        # super().__init__()
-        A.__init__(self)
+        super().__init__()
+        # A.__init__(self)
         print("C")
 
 

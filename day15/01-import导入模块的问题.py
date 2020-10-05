@@ -13,7 +13,7 @@ import sys
 for p in sys.path:
     print(p)
 
-print('--'*20)
+print('--' * 20)
 
 # 把指定的路径加入到环境变量中
 # 追加到末尾 有一个app1文件在桌面
@@ -25,4 +25,5 @@ for p in sys.path:
     print(p)
 
 import app1  # 得在添加路径的后面
+
 print(app1.name)

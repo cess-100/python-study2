@@ -29,10 +29,9 @@ def work2():
 
 
 if __name__ == '__main__':
-
     # 创建greenlet的对象 greenlet(函数名)
     g1 = greenlet(work1)
     g2 = greenlet(work2)
 
     # 执行work1任务
-    g2.switch()
+    g1.switch()

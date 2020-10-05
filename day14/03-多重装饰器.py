@@ -35,8 +35,6 @@ def test3():
     return "hello world-3"
 
 
-print(test())   # <b>hello world-1</b>
+print(test())  # <b>hello world-1</b>
 print(test2())  # <i>hello world-2</i>
 print(test3())  # <i><b>hello world-3</b></i>
-
-

@@ -37,5 +37,5 @@ def register():
     print("开始注册")
 
 
-login()
 register()
+login()

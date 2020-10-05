@@ -6,6 +6,7 @@ import re
 # result = re.match("hello", "xhello@163.com")
 # result = re.search("hello", "xhello@163.com")
 
+
 # 一、search的使用
 result = re.search("\d+", "阅读次数:9999")
 
@@ -19,6 +20,7 @@ if result:
 else:
     print("匹配失败!")
 
+
 # 二、findall("正则表达式", "待查找的内容") 搜索全部，返回值是个列表
 result = re.findall("\d+", "阅读次数:9999,转发次数：6666,评论次数：38")
 
@@ -27,6 +29,7 @@ if result:
     print("匹配结果:", result)
 else:
     print("匹配失败!")
+
 
 # 三、sub("正则表达式", "新的内容", "要替换的字符串")
 # 字符串替换（按照正则，查找字符串并且替换为指定的内容）返回值，是替换后的字符串
@@ -68,6 +71,7 @@ def add(temp):
 
 ret = re.sub(r"\d+", add, "python = 997")
 print(ret)
+
 
 # 四、split("正则表达式", "待拆分的字符串")  按照正则拆分字符串，返回值是一个列表
 result = re.split(":| ", "info:hello@163.com zhangsan lisi")

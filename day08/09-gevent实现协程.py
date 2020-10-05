@@ -6,6 +6,7 @@ gevent 好处：能够自动识别程序中的耗时操作，在耗时的时候�
 # 一般放到开头处
 # 1、导入模块
 from gevent import monkey
+
 # 2、破解所有
 monkey.patch_all()
 
@@ -20,6 +21,7 @@ def work1():
         # 默认情况下 time.sleep() 不能被gevent 识别为耗时操作
         # 1. 把time.sleep() ----> gevent.sleep()
         # gevent.sleep(0.5)
+
         # 2. 给　gevent 打补丁（目的：让　gevent 识别　time.sleep()）
         # 打补丁：
         # 　　在不修改程序源代码的情况下，为程序增加新的功能
@@ -31,13 +33,11 @@ def work1():
 def work2():
     while True:
         print("正在执行work2................", gevent.getcurrent())
-
         time.sleep(0.5)
         # gevent.sleep(0.5)
 
 
 if __name__ == '__main__':
-
     # 指派任务
     # gevent.spawn(函数名, 参数1,参数2,....)
     g1 = gevent.spawn(work1)
