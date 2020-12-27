@@ -20,7 +20,7 @@ udp_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, True)
 
 # 4、发送数据
 # udp_socket.sendto("哈哈，打不过我吧~".encode(), ("255.255.255.255", 8080))
-udp_socket.sendto("哈哈，打不过我吧~".encode(), ("192.168.150.255", 8080))
+udp_socket.sendto("哈哈，打不过我吧~".encode(), ("192.168.199.255", 8080))
 
 # 5、关闭套接字
 udp_socket.close()
