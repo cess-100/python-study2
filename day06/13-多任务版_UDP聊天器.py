@@ -33,6 +33,7 @@
 """
 import socket
 import threading
+import time
 
 
 def send_msg(udp_socket):
@@ -101,6 +102,8 @@ def main():
             print("系统正在退出中...")
             print("系统退出完成!")
             break
+
+        time.sleep(0.5)
 
     udp_socket.close()
 
