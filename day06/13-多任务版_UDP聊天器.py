@@ -66,9 +66,12 @@ def recv_msg(udp_socket):
         # 1) 使用socket接收数据
         recv_data, ip_port = udp_socket.recvfrom(1024)
         # 2）解码数据
-        recv_text = recv_data.decode()
-        # 3）输出显示
-        print("接收到[%s]的消息：%s" % (str(ip_port), recv_text))
+        if recv_data:
+            recv_text = recv_data.decode()
+            # 3）输出显示
+            print("收到来自[%s]的信息：%s" % (str(ip_port), recv_text))
+        else:
+            return
 
 
 def main():
