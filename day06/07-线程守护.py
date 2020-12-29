@@ -10,11 +10,12 @@ def work1():
 
 if __name__ == "__main__":
     thread_work = threading.Thread(target=work1)
-    thread_work.start()
 
     # 线程守护：子线程守护主线程
     # setDaemon(True) 表示子线程就守护了主线程（主线程结束后，子线程也结束）
     thread_work.setDaemon(True)
+
+    thread_work.start()
 
     # 睡眠2秒
     time.sleep(2)

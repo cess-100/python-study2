@@ -76,7 +76,7 @@ def main():
     udp_socket.bind(("", 8888))
 
     # 创建子线程，单独接收用户发送的信息
-    thread_recvmsg = threading.Thread(target=recv_msg, args=(udp_socket, ))
+    thread_recvmsg = threading.Thread(target=recv_msg, args=(udp_socket,))
     # 设置子线程守护主线程
     thread_recvmsg.setDaemon(True)
     # 启动子线程

@@ -28,6 +28,7 @@ class MyThread(threading.Thread):
             # self.name 从父类继承的一个属性
             print("正在执行子线程的run方法...", i, self.name, self.num)
             time.sleep(0.5)
+
     # def start():
     #    self run()
 
