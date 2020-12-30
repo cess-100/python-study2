@@ -43,7 +43,7 @@ def test2():
 
 # n 是一个生成器对象
 n = test2()
-print(n)
+print("n =", n)
 
 value = next(n)
 print("----->", value)
