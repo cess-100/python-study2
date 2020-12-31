@@ -6,7 +6,6 @@ gevent 好处：能够自动识别程序中的耗时操作，在耗时的时候�
 # 一般放到开头处
 # 1、导入模块
 from gevent import monkey
-
 # 2、破解所有
 monkey.patch_all()
 
