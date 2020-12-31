@@ -43,6 +43,8 @@ if __name__ == '__main__':
     g1 = gevent.spawn(work1)
     g2 = gevent.spawn(work2)
 
+    # time.sleep(5)
+
     # 让主线程等待携程执行完毕再退出
     g1.join()
     g2.join()
