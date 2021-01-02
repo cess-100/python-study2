@@ -174,7 +174,9 @@
 
 
         -- 多行插入
-        insert into students values(null, '欧阳铁娃', 18, 1.78, '妖', 1),(null, '诸葛铁锤', 18, 1.78, '妖', 1);
+        insert into students
+        values(null, '欧阳铁娃', 18, 1.78, '妖', 1),
+               (null, '诸葛铁锤', 18, 1.78, '妖', 1);
 
 
     -- 修改
