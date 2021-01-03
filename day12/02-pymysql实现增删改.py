@@ -11,7 +11,7 @@
 # 1、导入模块
 import pymysql
 
-conn = pymysql.connect(host="localhost",user="root",password="123123", database="jing_dong")
+conn = pymysql.connect(host="localhost", user="root", password="123123", database="jing_dong")
 cur = conn.cursor()
 
 # 4、使用游标对象执行SQL
