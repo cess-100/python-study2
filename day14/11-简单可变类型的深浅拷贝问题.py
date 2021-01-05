@@ -29,7 +29,7 @@ list2 = copy.deepcopy(list1)
 print("list2 = ", list2, id(list2))
 
 # 修改list2
-list2.append(7)
+list1.append(7)
 print("list1 = ", list1, id(list1))
 print("list2 = ", list2, id(list2))
 
