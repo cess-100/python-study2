@@ -24,7 +24,7 @@ class Son2(Parent):
 # 定义子类  Grandson --继承--> Son1 \ Son2
 class Grandson(Son1, Son2):
     def __init__(self, name, age, gender):
-        # Son1.__init__(self, name, age)  # 单独调⽤⽗类的初始化⽅法
+        # Son1.__init__(self, name, age)  # 单独调用⽗类的初始化方法
         # Son2.__init__(self, name, gender)
         super().__init__(name, age, gender)
         print('Grandson的init结束被调用')
