@@ -17,9 +17,9 @@ print('--' * 20)
 
 # 把指定的路径加入到环境变量中
 # 追加到末尾 有一个app1文件在桌面
-# sys.path.append("G:\\Users\\huxiaowu\\Desktop")
+# sys.path.append("G:\\Users\\cess\\Desktop")
 # 追加到开头
-sys.path.insert(0, "G:\\Users\\huxiaowu\\Desktop")
+sys.path.insert(0, "G:\\Users\\cess\\Desktop")
 
 for p in sys.path:
     print(p)
