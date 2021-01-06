@@ -6,7 +6,8 @@ class Parent(object):
 
 class Son1(Parent):
     def __init__(self, name, age):
-        super().__init__(name)
+        # super(Son1, self).__init__()
+        super().__init__()
         self.age = age
         print('Son1的init结束被调用')
 
