@@ -14,7 +14,7 @@ def func02(*args, **kwargs):
     print("kwargs =", kwargs)
 
     # 调用func01
-    # 此处没有进行拆包，导致参数传递过去不不和要求
+    # 此处没有进行拆包，导致参数传递过去不符合要求
     func01(args, kwargs)
     func01(*args, **kwargs)
 
