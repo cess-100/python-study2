@@ -26,7 +26,6 @@ class WebServer(object):
             p = multiprocessing.Process(target=self.request_handler, args=(new_client_socket, ip_port))
             # 设置进程守护
             p.daemon = True
-            # 3. 启动进程
             p.start()
 
             # 关闭new_client_socket ，否则无法释放套接字
